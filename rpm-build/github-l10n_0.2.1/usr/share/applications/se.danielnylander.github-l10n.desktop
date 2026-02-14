@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GitHub Translation Stats
+Name[sv]=GitHub-översättningsstatistik
+Comment=Scan GitHub repos for missing translations
+Comment[sv]=Sök bland GitHub-projekt efter saknade översättningar
+Exec=github-l10n
+Icon=se.danielnylander.github-l10n
+Terminal=false
+Type=Application
+Categories=Development;Translation;
+Keywords=github;translation;l10n;i18n;
