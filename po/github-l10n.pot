@@ -81,3 +81,11 @@ msgstr ""
 
 msgid "Save"
 msgstr ""
+
+#: desktop file
+msgid "Scan GitHub repos for missing translations"
+msgstr ""
+
+#: desktop file
+msgid "github;translation;l10n;i18n;"
+msgstr ""

@@ -1,0 +1,9 @@
+[Desktop Entry]
+_Name=GitHub Translation Stats
+_Comment=Scan GitHub repos for missing translations
+Exec=github-l10n
+Icon=se.danielnylander.github-l10n
+Terminal=false
+Type=Application
+Categories=Development;Translation;
+_Keywords=github;translation;l10n;i18n;
