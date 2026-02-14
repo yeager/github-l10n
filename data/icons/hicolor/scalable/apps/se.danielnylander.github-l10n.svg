@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3584e4"/>
+      <stop offset="100%" stop-color="#1a5fb4"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="16" fill="url(#bg)"/>
+  <!-- GitHub octocat silhouette simplified -->
+  <circle cx="64" cy="48" r="22" fill="white"/>
+  <ellipse cx="54" cy="44" rx="3" ry="4" fill="#1a5fb4"/>
+  <ellipse cx="74" cy="44" rx="3" ry="4" fill="#1a5fb4"/>
+  <path d="M56 54 Q64 60 72 54" stroke="#1a5fb4" stroke-width="2" fill="none"/>
+  <!-- Globe/translation icon -->
+  <circle cx="64" cy="90" r="18" fill="none" stroke="white" stroke-width="3"/>
+  <ellipse cx="64" cy="90" rx="8" ry="18" fill="none" stroke="white" stroke-width="2"/>
+  <line x1="46" y1="90" x2="82" y2="90" stroke="white" stroke-width="2"/>
+  <!-- "sv" text -->
+  <text x="64" y="96" text-anchor="middle" font-size="14" font-weight="bold" fill="white" font-family="sans-serif">sv</text>
+</svg>

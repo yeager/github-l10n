@@ -1,0 +1,8 @@
+[main]
+host = https://app.linguaedit.com
+
+[o:danielnylander:p:github-l10n:r:github-l10n-pot]
+file_filter = po/<lang>.po
+source_file = po/github-l10n.pot
+source_lang = en
+type = PO
