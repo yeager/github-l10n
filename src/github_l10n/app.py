@@ -170,7 +170,7 @@ class DetailDialog(Adw.Dialog):
 
 class MainWindow(Adw.ApplicationWindow):
     def __init__(self, app):
-        super().__init__(application=app)
+        super().__init__(application=app, default_width=900, default_height=700)
         self.set_title(_("GitHub Translation Stats"))
         self.set_default_size(900, 700)
 
