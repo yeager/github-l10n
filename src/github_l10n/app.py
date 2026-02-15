@@ -1,6 +1,8 @@
 """Main GTK4/Adwaita application for GitHub Translation Stats."""
 
+import csv
 import gettext
+import json
 import locale
 import os
 import sys
@@ -304,6 +306,9 @@ class MainWindow(Adw.ApplicationWindow):
         app_menu = Gio.Menu()
         about_section = Gio.Menu()
         about_section.append(_("About"), "app.about")
+        notif_section = Gio.Menu()
+        notif_section.append(_("Toggle Notifications"), "app.toggle-notifications")
+        app_menu.append_section(None, notif_section)
         app_menu.append_section(None, about_section)
         menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=app_menu)
         header.pack_end(menu_btn)
@@ -451,6 +456,11 @@ class MainWindow(Adw.ApplicationWindow):
                         % {"total": total, "yes": yes, "no": no, "partial": partial, "lang": self.current_lang}
                     )
                     self.progress.set_visible(False)
+                    if no > 0:
+                        _send_notification(
+                            _("GitHub L10n: Scan complete"),
+                            _("{no} repos without {lang} translation").format(no=no, lang=self.current_lang),
+                            "github-l10n")
                     self._update_status_bar()
                     self.listbox.invalidate_filter()
                     self.listbox.invalidate_sort()
@@ -587,9 +597,15 @@ from datetime import datetime as _dt_now
 class GithubL10nApp(Adw.Application):
     def __init__(self):
         super().__init__(application_id=APP_ID)
+        if HAS_NOTIFY:
+            _Notify.init("github-l10n")
         about_action = Gio.SimpleAction.new("about", None)
         about_action.connect("activate", self._on_about)
         self.add_action(about_action)
+
+        notif_action = Gio.SimpleAction.new("toggle-notifications", None)
+        notif_action.connect("activate", lambda *_: _save_notify_config({"enabled": not _load_notify_config().get("enabled", False)}))
+        self.add_action(notif_action)
 
     def do_startup(self):
         Adw.Application.do_startup(self)
@@ -638,6 +654,8 @@ class GithubL10nApp(Adw.Application):
             translator_credits="Daniel Nylander <daniel@danielnylander.se>",
             comments=_("Scan GitHub repositories for missing translations"),
         )
+        about.set_debug_info(_get_system_info())
+        about.set_debug_info_filename("github-l10n-debug.txt")
         about.present()
 
 
