@@ -1,11 +1,17 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Daniel Nylander
+# This file is distributed under the same license as the github-l10n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Daniel Nylander <po@danielnylander.se>, 2026
 # 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: github-l10n 0.1.0\n"
-"POT-Creation-Date: 2026-02-14 15:00+0100\n"
+"Project-Id-Version: github-l10n\n"
+"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
+"POT-Creation-Date: 2026-02-15 10:08+0100\n"
 "PO-Revision-Date: 2026-02-14 17:11+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
 "Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/304774/sv/)\n"
@@ -15,69 +21,114 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "GitHub Translation Stats"
-msgstr "Översättningsstatus för GitHub"
-
+#: src/github_l10n/app.py:33 src/github_l10n/app.py:141
 msgid "Yes"
 msgstr "Ja"
 
+#: src/github_l10n/app.py:34 src/github_l10n/app.py:141
 msgid "No"
 msgstr "Nej"
 
+#: src/github_l10n/app.py:35
 msgid "Partial"
 msgstr "Delvis"
 
+#: src/github_l10n/app.py:36
 msgid "Unknown"
 msgstr "Okänt"
 
+#: src/github_l10n/app.py:37
 msgid "Scanning…"
-msgstr "Söker..."
+msgstr "Söker…"
 
-msgid "Language:"
-msgstr "Språk:"
-
-msgid "Set GitHub Token"
-msgstr "Ställ in GitHub-token"
-
-msgid "Refresh"
-msgstr "Uppdatera"
-
-msgid "Click Refresh to scan GitHub repos"
-msgstr "Klicka på Uppdatera för att söka efter GitHub-förråd"
-
-msgid "Fetching top repos…"
-msgstr "Hämtar toppförråd..."
-
-msgid "All"
-msgstr "Alla"
-
-msgid "Without translation"
-msgstr "Utan översättning"
-
-msgid "With translation"
-msgstr "Med översättning"
-
+#: src/github_l10n/app.py:135
 msgid "Translation Status"
 msgstr "Översättningsstatus"
 
+#: src/github_l10n/app.py:140
 msgid "Has any l10n files"
 msgstr "Har några l10n-filer"
 
+#: src/github_l10n/app.py:148
 msgid "Translation Files"
 msgstr "Översättningsfiler"
 
+#: src/github_l10n/app.py:152
 msgid "Open"
 msgstr "Öppna"
 
+#: src/github_l10n/app.py:160
 msgid "Repository"
 msgstr "Förråd"
 
+#: src/github_l10n/app.py:161
 msgid "Open on GitHub"
 msgstr "Öppna på GitHub"
 
+#: src/github_l10n/app.py:177 src/github_l10n/app.py:431
+msgid "GitHub Translation Stats"
+msgstr "Översättningsstatus för GitHub"
+
+#: src/github_l10n/app.py:194
+msgid "Set GitHub Token"
+msgstr "Ställ in GitHub-token"
+
+#: src/github_l10n/app.py:200
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: src/github_l10n/app.py:206
+msgid "Language:"
+msgstr "Språk:"
+
+#: src/github_l10n/app.py:218
+msgid "About"
+msgstr "Om"
+
+#: src/github_l10n/app.py:224
+msgid "All"
+msgstr "Alla"
+
+#: src/github_l10n/app.py:224
+msgid "Without translation"
+msgstr "Utan översättning"
+
+#: src/github_l10n/app.py:224
+msgid "With translation"
+msgstr "Med översättning"
+
+#: src/github_l10n/app.py:235
+msgid "Click Refresh to scan GitHub repos"
+msgstr "Klicka på Uppdatera för att söka efter GitHub-förråd"
+
+#: src/github_l10n/app.py:268
+msgid "Fetching top repos…"
+msgstr "Hämtar toppförråd…"
+
+#: src/github_l10n/app.py:296
+#, python-format
+msgid "Loaded %d repos. Scanning translations…"
+msgstr "Läste in %d arkiv. Söker efter översättningar…"
+
+#: src/github_l10n/app.py:324
+#, python-format
+msgid ""
+"%(total)d repos: %(yes)d with, %(no)d without, %(partial)d partial %(lang)s "
+"translation"
+msgstr ""
+"%(total)d arkiv: %(yes)d med, %(no)d utan, %(partial)d partiell %(lang)s "
+"översättning"
+
+#: src/github_l10n/app.py:351
+#, python-format
+msgid "Re-scanning for %s…"
+msgstr "Söker igenom igen efter %s…"
+
+#: src/github_l10n/app.py:390
 msgid "GitHub Token"
 msgstr "GitHub-token"
 
+#: src/github_l10n/app.py:391
 msgid ""
 "Enter a GitHub personal access token for higher rate limits (5000/h vs "
 "60/h). Leave empty to use unauthenticated access."
@@ -86,16 +137,14 @@ msgstr ""
 "(5000/h jämfört med 60/h). Lämna fältet tomt för att använda icke-"
 "autentiserad åtkomst."
 
+#: src/github_l10n/app.py:392
 msgid "Cancel"
 msgstr "Avbryt"
 
+#: src/github_l10n/app.py:393
 msgid "Save"
 msgstr "Spara"
 
-#: desktop file
-msgid "Scan GitHub repos for missing translations"
-msgstr "Sök igenom GitHub-förråd efter saknade översättningar"
-
-#: desktop file
-msgid "github;translation;l10n;i18n;"
-msgstr "github;översättning;l10n;i18n;"
+#: src/github_l10n/app.py:441
+msgid "Scan GitHub repositories for missing translations"
+msgstr "Sök efter saknade översättningar i GitHub-arkiv"
