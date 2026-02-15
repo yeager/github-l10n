@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: github-l10n\n"
 "Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-02-15 10:08+0100\n"
+"POT-Creation-Date: 2026-02-15 10:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/github_l10n/app.py:33 src/github_l10n/app.py:141
+#: src/github_l10n/app.py:33 src/github_l10n/app.py:162
 msgid "Yes"
 msgstr ""
 
-#: src/github_l10n/app.py:34 src/github_l10n/app.py:141
+#: src/github_l10n/app.py:34 src/github_l10n/app.py:162
 msgid "No"
 msgstr ""
 
@@ -37,105 +37,109 @@ msgstr ""
 msgid "Scanning…"
 msgstr ""
 
-#: src/github_l10n/app.py:135
+#: src/github_l10n/app.py:156
 msgid "Translation Status"
 msgstr ""
 
-#: src/github_l10n/app.py:140
+#: src/github_l10n/app.py:161
 msgid "Has any l10n files"
 msgstr ""
 
-#: src/github_l10n/app.py:148
+#: src/github_l10n/app.py:169
 msgid "Translation Files"
 msgstr ""
 
-#: src/github_l10n/app.py:152
+#: src/github_l10n/app.py:173
 msgid "Open"
 msgstr ""
 
-#: src/github_l10n/app.py:160
+#: src/github_l10n/app.py:181
 msgid "Repository"
 msgstr ""
 
-#: src/github_l10n/app.py:161
+#: src/github_l10n/app.py:182
 msgid "Open on GitHub"
 msgstr ""
 
-#: src/github_l10n/app.py:177 src/github_l10n/app.py:431
+#: src/github_l10n/app.py:198 src/github_l10n/app.py:524
 msgid "GitHub Translation Stats"
 msgstr ""
 
-#: src/github_l10n/app.py:194
+#: src/github_l10n/app.py:218
+msgid "Toggle heatmap view"
+msgstr ""
+
+#: src/github_l10n/app.py:224
 msgid "Set GitHub Token"
 msgstr ""
 
-#: src/github_l10n/app.py:200
+#: src/github_l10n/app.py:230
 msgid "Refresh"
 msgstr ""
 
-#: src/github_l10n/app.py:206
+#: src/github_l10n/app.py:236
 msgid "Language:"
 msgstr ""
 
-#: src/github_l10n/app.py:218
+#: src/github_l10n/app.py:248
 msgid "About"
 msgstr ""
 
-#: src/github_l10n/app.py:224
+#: src/github_l10n/app.py:254
 msgid "All"
 msgstr ""
 
-#: src/github_l10n/app.py:224
+#: src/github_l10n/app.py:254
 msgid "Without translation"
 msgstr ""
 
-#: src/github_l10n/app.py:224
+#: src/github_l10n/app.py:254
 msgid "With translation"
 msgstr ""
 
-#: src/github_l10n/app.py:235
+#: src/github_l10n/app.py:265
 msgid "Click Refresh to scan GitHub repos"
 msgstr ""
 
-#: src/github_l10n/app.py:268
+#: src/github_l10n/app.py:317
 msgid "Fetching top repos…"
 msgstr ""
 
-#: src/github_l10n/app.py:296
+#: src/github_l10n/app.py:345
 #, python-format
 msgid "Loaded %d repos. Scanning translations…"
 msgstr ""
 
-#: src/github_l10n/app.py:324
+#: src/github_l10n/app.py:373
 #, python-format
 msgid ""
 "%(total)d repos: %(yes)d with, %(no)d without, %(partial)d partial %(lang)s "
 "translation"
 msgstr ""
 
-#: src/github_l10n/app.py:351
+#: src/github_l10n/app.py:401
 #, python-format
 msgid "Re-scanning for %s…"
 msgstr ""
 
-#: src/github_l10n/app.py:390
+#: src/github_l10n/app.py:483
 msgid "GitHub Token"
 msgstr ""
 
-#: src/github_l10n/app.py:391
+#: src/github_l10n/app.py:484
 msgid ""
 "Enter a GitHub personal access token for higher rate limits (5000/h vs 60/"
 "h). Leave empty to use unauthenticated access."
 msgstr ""
 
-#: src/github_l10n/app.py:392
+#: src/github_l10n/app.py:485
 msgid "Cancel"
 msgstr ""
 
-#: src/github_l10n/app.py:393
+#: src/github_l10n/app.py:486
 msgid "Save"
 msgstr ""
 
-#: src/github_l10n/app.py:441
+#: src/github_l10n/app.py:535
 msgid "Scan GitHub repositories for missing translations"
 msgstr ""
