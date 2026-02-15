@@ -212,6 +212,14 @@ class MainWindow(Adw.ApplicationWindow):
         lang_box.append(self.lang_dropdown)
         header.pack_end(lang_box)
 
+        # App menu
+        app_menu = Gio.Menu()
+        about_section = Gio.Menu()
+        about_section.append(_("About"), "app.about")
+        app_menu.append_section(None, about_section)
+        menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=app_menu)
+        header.pack_end(menu_btn)
+
         # Filter dropdown
         filter_strings = [_("All"), _("Without translation"), _("With translation")]
         self.filter_dropdown = Gtk.DropDown.new_from_strings(filter_strings)
@@ -407,12 +415,32 @@ class MainWindow(Adw.ApplicationWindow):
 class GithubL10nApp(Adw.Application):
     def __init__(self):
         super().__init__(application_id=APP_ID)
+        about_action = Gio.SimpleAction.new("about", None)
+        about_action.connect("activate", self._on_about)
+        self.add_action(about_action)
 
     def do_activate(self):
         win = self.get_active_window()
         if not win:
             win = MainWindow(self)
         win.present()
+
+    def _on_about(self, *_args):
+        about = Adw.AboutWindow(
+            transient_for=self.props.active_window,
+            application_name=_("GitHub Translation Stats"),
+            application_icon="github-l10n",
+            version="0.2.2",
+            developer_name="Daniel Nylander",
+            developers=["Daniel Nylander <daniel@danielnylander.se>"],
+            copyright="© 2026 Daniel Nylander",
+            license_type=Gtk.License.GPL_3_0,
+            website="https://github.com/yeager/github-l10n",
+            issue_url="https://github.com/yeager/github-l10n/issues",
+            translator_credits="Daniel Nylander <daniel@danielnylander.se>",
+            comments=_("Scan GitHub repositories for missing translations"),
+        )
+        about.present()
 
 
 def main():
