@@ -313,6 +313,12 @@ class MainWindow(Adw.ApplicationWindow):
         menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=app_menu)
         header.pack_end(menu_btn)
 
+        # Export button
+        export_btn = Gtk.Button(icon_name="document-save-symbolic",
+                                tooltip_text=_("Export data"))
+        export_btn.connect("clicked", self._on_export_clicked)
+        header.pack_end(export_btn)
+
         # Filter dropdown
         filter_strings = [_("All"), _("Without translation"), _("With translation")]
         self.filter_dropdown = Gtk.DropDown.new_from_strings(filter_strings)
@@ -394,6 +400,46 @@ class MainWindow(Adw.ApplicationWindow):
 
     def _update_status_bar(self):
         self._last_update_bar.set_text("Last updated: " + _dt_now.now().strftime("%Y-%m-%d %H:%M"))
+
+    def _on_export_clicked(self, *_args):
+        dialog = Adw.MessageDialog(transient_for=self,
+                                   heading=_("Export Data"),
+                                   body=_("Choose export format:"))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("csv", "CSV")
+        dialog.add_response("json", "JSON")
+        dialog.set_response_appearance("csv", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", self._on_export_format_chosen)
+        dialog.present()
+
+    def _on_export_format_chosen(self, dialog, response):
+        if response not in ("csv", "json"):
+            return
+        self._export_fmt = response
+        fd = Gtk.FileDialog()
+        fd.set_initial_name(f"github-l10n.{response}")
+        fd.save(self, None, self._on_export_save)
+
+    def _on_export_save(self, dialog, result):
+        try:
+            path = dialog.save_finish(result).get_path()
+        except Exception:
+            return
+        data = [{"name": r.get("full_name", r.get("name", "")),
+                 "l10n_status": r.get("l10n_status", "unknown"),
+                 "description": r.get("description", ""),
+                 "html_url": r.get("html_url", "")}
+                for r in self.repos]
+        if not data:
+            return
+        if self._export_fmt == "csv":
+            with open(path, "w", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=data[0].keys())
+                w.writeheader()
+                w.writerows(data)
+        else:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
 
     def _on_refresh(self, *_args):
         self.status_label.set_label(_("Fetching top repos…"))
@@ -537,7 +583,6 @@ class MainWindow(Adw.ApplicationWindow):
             box.append(st_lbl)
             box.set_tooltip_text(repo.get("full_name", ""))
             import webbrowser
-from datetime import datetime as _dt_now
             gesture = Gtk.GestureClick()
             gesture.connect("released", lambda g, n, x, y, url=repo.get("html_url", ""): webbrowser.open(url))
             box.add_controller(gesture)
@@ -612,6 +657,10 @@ class GithubL10nApp(Adw.Application):
         self.set_accels_for_action("app.quit", ["<Control>q"])
         self.set_accels_for_action("app.refresh", ["F5"])
         self.set_accels_for_action("app.shortcuts", ["<Control>slash"])
+        self.set_accels_for_action("app.export", ["<Control>e"])
+        export_action = Gio.SimpleAction.new("export", None)
+        export_action.connect("activate", lambda *_: self.get_active_window() and self.get_active_window()._on_export_clicked())
+        self.add_action(export_action)
         for n, cb in [("quit", lambda *_: self.quit()),
                       ("refresh", lambda *_: self._do_refresh()),
                       ("shortcuts", self._show_shortcuts_window)]:
