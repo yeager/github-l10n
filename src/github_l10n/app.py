@@ -10,7 +10,7 @@ from pathlib import Path
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, GLib, Pango
+from gi.repository import Gtk, Adw, Gio, GLib, Pango, Gdk
 
 from github_l10n.api import GitHubClient, L10N_PATTERNS
 
@@ -44,6 +44,27 @@ STATUS_CSS = {
     "unknown": "dim-label",
     "scanning": "dim-label",
 }
+
+_HEATMAP_STATUS_CSS = {
+    "yes": "heatmap-green",
+    "no": "heatmap-red",
+    "partial": "heatmap-yellow",
+    "unknown": "heatmap-gray",
+    "scanning": "heatmap-gray",
+}
+
+
+def _setup_heatmap_css():
+    css = b"""
+    .heatmap-green { background-color: #26a269; color: white; border-radius: 8px; }
+    .heatmap-yellow { background-color: #e5a50a; color: white; border-radius: 8px; }
+    .heatmap-red { background-color: #c01c28; color: white; border-radius: 8px; }
+    .heatmap-gray { background-color: #77767b; color: white; border-radius: 8px; }
+    """
+    provider = Gtk.CssProvider()
+    provider.load_from_data(css)
+    Gtk.StyleContext.add_provider_for_display(
+        Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
 
 class RepoRow(Gtk.ListBoxRow):
@@ -182,12 +203,21 @@ class MainWindow(Adw.ApplicationWindow):
         self.l10n_data = {}
         self.current_lang = "sv"
         self.current_filter = "all"
+        self._heatmap_mode = False
+
+        _setup_heatmap_css()
 
         # Main layout
         toolbar_view = Adw.ToolbarView()
 
         # Header bar
         header = Adw.HeaderBar()
+
+        # Heatmap toggle
+        self._heatmap_btn = Gtk.ToggleButton(icon_name="view-grid-symbolic")
+        self._heatmap_btn.set_tooltip_text(_("Toggle heatmap view"))
+        self._heatmap_btn.connect("toggled", self._on_heatmap_toggled)
+        header.pack_start(self._heatmap_btn)
 
         # Token button
         token_btn = Gtk.Button(icon_name="dialog-password-symbolic")
@@ -259,7 +289,26 @@ class MainWindow(Adw.ApplicationWindow):
         self.listbox.set_filter_func(self._filter_func)
 
         scrolled.set_child(self.listbox)
-        content_box.append(scrolled)
+
+        # Heatmap view
+        heatmap_scroll = Gtk.ScrolledWindow(vexpand=True)
+        self._heatmap_flow = Gtk.FlowBox()
+        self._heatmap_flow.set_selection_mode(Gtk.SelectionMode.NONE)
+        self._heatmap_flow.set_homogeneous(True)
+        self._heatmap_flow.set_min_children_per_line(3)
+        self._heatmap_flow.set_max_children_per_line(8)
+        self._heatmap_flow.set_column_spacing(4)
+        self._heatmap_flow.set_row_spacing(4)
+        self._heatmap_flow.set_margin_start(16)
+        self._heatmap_flow.set_margin_end(16)
+        self._heatmap_flow.set_margin_top(8)
+        self._heatmap_flow.set_margin_bottom(16)
+        heatmap_scroll.set_child(self._heatmap_flow)
+
+        self._view_stack = Gtk.Stack()
+        self._view_stack.add_named(scrolled, "list")
+        self._view_stack.add_named(heatmap_scroll, "heatmap")
+        content_box.append(self._view_stack)
 
         toolbar_view.set_content(content_box)
         self.set_content(toolbar_view)
@@ -327,6 +376,7 @@ class MainWindow(Adw.ApplicationWindow):
                     self.progress.set_visible(False)
                     self.listbox.invalidate_filter()
                     self.listbox.invalidate_sort()
+                    self._rebuild_heatmap()
 
             GLib.idle_add(update)
             # Rate limit: ~2 requests per repo, be gentle
@@ -361,6 +411,49 @@ class MainWindow(Adw.ApplicationWindow):
                         row.update_status("scanning")
                     i += 1
                 threading.Thread(target=self._scan_l10n, daemon=True).start()
+
+    def _on_heatmap_toggled(self, btn):
+        self._heatmap_mode = btn.get_active()
+        self._rebuild_heatmap()
+        self._view_stack.set_visible_child_name("heatmap" if self._heatmap_mode else "list")
+
+    def _rebuild_heatmap(self):
+        while True:
+            child = self._heatmap_flow.get_first_child()
+            if child is None:
+                break
+            self._heatmap_flow.remove(child)
+        for repo in self.repos:
+            status = repo.get("l10n_status", "unknown")
+            if self.current_filter == "no" and status not in ("no", "unknown"):
+                continue
+            if self.current_filter == "yes" and status not in ("yes", "partial"):
+                continue
+            name = repo.get("full_name", "").split("/")[-1]
+            box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+            box.set_size_request(140, 60)
+            box.add_css_class(_HEATMAP_STATUS_CSS.get(status, "heatmap-gray"))
+            box.set_margin_start(4)
+            box.set_margin_end(4)
+            box.set_margin_top(4)
+            box.set_margin_bottom(4)
+            lbl = Gtk.Label(label=name)
+            lbl.set_ellipsize(Pango.EllipsizeMode.END)
+            lbl.set_max_width_chars(18)
+            lbl.set_margin_top(6)
+            lbl.set_margin_start(6)
+            lbl.set_margin_end(6)
+            box.append(lbl)
+            st_lbl = Gtk.Label(label=STATUS_LABELS.get(status, status))
+            st_lbl.set_margin_bottom(6)
+            box.append(st_lbl)
+            box.set_tooltip_text(repo.get("full_name", ""))
+            import webbrowser
+            gesture = Gtk.GestureClick()
+            gesture.connect("released", lambda g, n, x, y, url=repo.get("html_url", ""): webbrowser.open(url))
+            box.add_controller(gesture)
+            box.set_cursor(Gdk.Cursor.new_from_name("pointer"))
+            self._heatmap_flow.append(box)
 
     def _on_filter_changed(self, dropdown, _pspec):
         idx = dropdown.get_selected()
