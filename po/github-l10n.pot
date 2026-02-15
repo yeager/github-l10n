@@ -1,91 +1,141 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Daniel Nylander
+# This file is distributed under the same license as the github-l10n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: github-l10n 0.1.0\n"
-"POT-Creation-Date: 2026-02-14 15:00+0100\n"
+"Project-Id-Version: github-l10n\n"
+"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
+"POT-Creation-Date: 2026-02-15 10:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "GitHub Translation Stats"
-msgstr ""
-
+#: src/github_l10n/app.py:33 src/github_l10n/app.py:141
 msgid "Yes"
 msgstr ""
 
+#: src/github_l10n/app.py:34 src/github_l10n/app.py:141
 msgid "No"
 msgstr ""
 
+#: src/github_l10n/app.py:35
 msgid "Partial"
 msgstr ""
 
+#: src/github_l10n/app.py:36
 msgid "Unknown"
 msgstr ""
 
+#: src/github_l10n/app.py:37
 msgid "Scanning…"
 msgstr ""
 
-msgid "Language:"
-msgstr ""
-
-msgid "Set GitHub Token"
-msgstr ""
-
-msgid "Refresh"
-msgstr ""
-
-msgid "Click Refresh to scan GitHub repos"
-msgstr ""
-
-msgid "Fetching top repos…"
-msgstr ""
-
-msgid "All"
-msgstr ""
-
-msgid "Without translation"
-msgstr ""
-
-msgid "With translation"
-msgstr ""
-
+#: src/github_l10n/app.py:135
 msgid "Translation Status"
 msgstr ""
 
+#: src/github_l10n/app.py:140
 msgid "Has any l10n files"
 msgstr ""
 
+#: src/github_l10n/app.py:148
 msgid "Translation Files"
 msgstr ""
 
+#: src/github_l10n/app.py:152
 msgid "Open"
 msgstr ""
 
+#: src/github_l10n/app.py:160
 msgid "Repository"
 msgstr ""
 
+#: src/github_l10n/app.py:161
 msgid "Open on GitHub"
 msgstr ""
 
+#: src/github_l10n/app.py:177 src/github_l10n/app.py:431
+msgid "GitHub Translation Stats"
+msgstr ""
+
+#: src/github_l10n/app.py:194
+msgid "Set GitHub Token"
+msgstr ""
+
+#: src/github_l10n/app.py:200
+msgid "Refresh"
+msgstr ""
+
+#: src/github_l10n/app.py:206
+msgid "Language:"
+msgstr ""
+
+#: src/github_l10n/app.py:218
+msgid "About"
+msgstr ""
+
+#: src/github_l10n/app.py:224
+msgid "All"
+msgstr ""
+
+#: src/github_l10n/app.py:224
+msgid "Without translation"
+msgstr ""
+
+#: src/github_l10n/app.py:224
+msgid "With translation"
+msgstr ""
+
+#: src/github_l10n/app.py:235
+msgid "Click Refresh to scan GitHub repos"
+msgstr ""
+
+#: src/github_l10n/app.py:268
+msgid "Fetching top repos…"
+msgstr ""
+
+#: src/github_l10n/app.py:296
+#, python-format
+msgid "Loaded %d repos. Scanning translations…"
+msgstr ""
+
+#: src/github_l10n/app.py:324
+#, python-format
+msgid ""
+"%(total)d repos: %(yes)d with, %(no)d without, %(partial)d partial %(lang)s "
+"translation"
+msgstr ""
+
+#: src/github_l10n/app.py:351
+#, python-format
+msgid "Re-scanning for %s…"
+msgstr ""
+
+#: src/github_l10n/app.py:390
 msgid "GitHub Token"
 msgstr ""
 
-msgid "Enter a GitHub personal access token for higher rate limits (5000/h vs 60/h). Leave empty to use unauthenticated access."
+#: src/github_l10n/app.py:391
+msgid ""
+"Enter a GitHub personal access token for higher rate limits (5000/h vs 60/"
+"h). Leave empty to use unauthenticated access."
 msgstr ""
 
+#: src/github_l10n/app.py:392
 msgid "Cancel"
 msgstr ""
 
+#: src/github_l10n/app.py:393
 msgid "Save"
 msgstr ""
 
-#: desktop file
-msgid "Scan GitHub repos for missing translations"
-msgstr ""
-
-#: desktop file
-msgid "github;translation;l10n;i18n;"
+#: src/github_l10n/app.py:441
+msgid "Scan GitHub repositories for missing translations"
 msgstr ""
