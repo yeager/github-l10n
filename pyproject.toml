@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "github-l10n"
-version = "0.2.4"
+version = "0.2.5"
 description = "Scan popular GitHub repos for missing translations"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
