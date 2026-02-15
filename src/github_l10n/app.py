@@ -2,6 +2,7 @@
 
 import gettext
 import locale
+import os
 import sys
 import threading
 from pathlib import Path
@@ -16,6 +17,8 @@ from github_l10n.api import GitHubClient, L10N_PATTERNS
 # i18n
 APP_ID = "se.danielnylander.github-l10n"
 LOCALE_DIR = str(Path(__file__).parent.parent.parent / "po")
+if not os.path.isdir(LOCALE_DIR):
+    LOCALE_DIR = "/usr/share/locale"
 try:
     locale.setlocale(locale.LC_ALL, "")
 except locale.Error:
