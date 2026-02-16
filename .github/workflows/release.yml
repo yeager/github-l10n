@@ -15,6 +15,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install gettext
+        run: sudo apt-get install -y gettext
+
+      - name: Generate translated .desktop file
+        run: |
+          python3 desktop-merge.py data/se.danielnylander.github-l10n.desktop.in po/ data/se.danielnylander.github-l10n.desktop
+
       - run: pip install build
       - run: python -m build
       - uses: softprops/action-gh-release@v2

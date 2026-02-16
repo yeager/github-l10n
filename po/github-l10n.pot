@@ -143,3 +143,11 @@ msgstr ""
 #: src/github_l10n/app.py:535
 msgid "Scan GitHub repositories for missing translations"
 msgstr ""
+
+#: github-l10n/data/se.danielnylander.github-l10n.desktop.in
+msgid "Scan GitHub repos for missing translations"
+msgstr ""
+
+#: github-l10n/data/se.danielnylander.github-l10n.desktop.in
+msgid "github;translation;l10n;i18n;"
+msgstr ""
