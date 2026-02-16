@@ -688,8 +688,7 @@ class GithubL10nApp(Adw.Application):
         win.present()
 
     def _on_about(self, *_args):
-        about = Adw.AboutWindow(
-            transient_for=self.props.active_window,
+        about = Adw.AboutDialog(
             application_name=_("GitHub Translation Stats"),
             application_icon="github-l10n",
             version="0.2.2",
@@ -705,7 +704,7 @@ class GithubL10nApp(Adw.Application):
         )
         about.set_debug_info(_get_system_info())
         about.set_debug_info_filename("github-l10n-debug.txt")
-        about.present()
+        about.present(self.props.active_window)
 
 
 def main():
