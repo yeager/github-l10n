@@ -1,5 +1,5 @@
 [main]
-host = https://app.linguaedit.com
+host = https://www.transifex.com
 
 [o:danielnylander:p:github-l10n:r:github-l10n-pot]
 file_filter = po/<lang>.po
