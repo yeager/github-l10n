@@ -25,7 +25,7 @@ msgstr ""
 #: data/man/github-l10n.1:1
 #, no-wrap
 msgid "GITHUB-L10N"
-msgstr ""
+msgstr "GITHUB-L10N"
 
 #. type: TH
 #: data/man/github-l10n.1:1
@@ -43,7 +43,7 @@ msgstr "Daniel Nylander"
 #: data/man/github-l10n.1:1
 #, no-wrap
 msgid "GitHub L10n Manual"
-msgstr ""
+msgstr "Manual för GitHub L10n"
 
 #. type: SH
 #: data/man/github-l10n.1:2
@@ -54,7 +54,7 @@ msgstr "NAMN"
 #. type: Plain text
 #: data/man/github-l10n.1:4
 msgid "github-l10n - Scan GitHub repos for missing translations"
-msgstr ""
+msgstr "github-l10n - Sök efter saknade översättningar i GitHub-arkiv"
 
 #. type: SH
 #: data/man/github-l10n.1:4
@@ -65,7 +65,7 @@ msgstr "SYNOPSIS"
 #. type: Plain text
 #: data/man/github-l10n.1:6
 msgid "B<github-l10n>"
-msgstr ""
+msgstr "B<github-l10n>"
 
 #. type: SH
 #: data/man/github-l10n.1:6
@@ -82,6 +82,12 @@ msgid ""
 "filtering by translation status, drill-down to specific files, optional "
 "GitHub token for higher rate limits, and local caching."
 msgstr ""
+"B<github-l10n> är en GTK4/Adwaita-applikation som söker igenom populära "
+"GitHub-arkiv med öppen källkod och visar vilka som har eller saknar "
+"översättningar för ett visst språk. Den söker efter .po-, .ts- och .xliff-"
+"filer, stöder filtrering efter översättningsstatus, gå ner till specifika "
+"filer, valfri GitHub-token för högre hastighetsbegränsningar och lokal "
+"caching."
 
 #. type: SH
 #: data/man/github-l10n.1:8
@@ -93,12 +99,12 @@ msgstr "FLAGGOR"
 #: data/man/github-l10n.1:9
 #, no-wrap
 msgid "B<--help>"
-msgstr ""
+msgstr "B<--help>"
 
 #. type: Plain text
 #: data/man/github-l10n.1:12
 msgid "Show help message and exit."
-msgstr ""
+msgstr "Visa hjälpmeddelande och avsluta."
 
 #. type: SH
 #: data/man/github-l10n.1:12
@@ -110,7 +116,7 @@ msgstr "FILER"
 #: data/man/github-l10n.1:13
 #, no-wrap
 msgid "I<~/.config/github-l10n/>"
-msgstr ""
+msgstr "I<~/.config/github-l10n/>"
 
 #. type: Plain text
 #: data/man/github-l10n.1:16
@@ -121,7 +127,7 @@ msgstr "Konfigurationsfiler."
 #: data/man/github-l10n.1:16
 #, no-wrap
 msgid "I<~/.cache/github-l10n/>"
-msgstr ""
+msgstr "I<~/.cache/github-l10n/>"
 
 #. type: Plain text
 #: data/man/github-l10n.1:19
@@ -137,7 +143,7 @@ msgstr "BUGGAR"
 #. type: Plain text
 #: data/man/github-l10n.1:21
 msgid "Report bugs at https://github.com/yeager/github-l10n/issues"
-msgstr ""
+msgstr "Rapportera buggar på https://github.com/yeager/github-l10n/issues"
 
 #. type: SH
 #: data/man/github-l10n.1:21
@@ -159,4 +165,4 @@ msgstr "SE ÄVEN"
 #. type: Plain text
 #: data/man/github-l10n.1:24
 msgid "Project homepage: https://github.com/yeager/github-l10n"
-msgstr ""
+msgstr "Projektets webbsida: https://github.com/yeager/github-l10n"
