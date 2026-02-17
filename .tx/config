@@ -6,9 +6,3 @@ file_filter = po/<lang>.po
 source_file = po/github-l10n.pot
 source_lang = en
 type = PO
-
-[o:danielnylander:p:github-l10n:r:github-l10n-man]
-file_filter  = po/man/<lang>.po
-source_file  = po/man/github-l10n.1.pot
-source_lang  = en
-type         = PO
