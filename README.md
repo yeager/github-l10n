@@ -1,5 +1,9 @@
 # GitHub Translation Stats
 
+## Screenshot
+
+![Ubuntu L10n](screenshots/main.png)
+
 A GTK4/Adwaita application that scans popular open-source GitHub repositories and shows which ones have (or lack) translations for a given language.
 
 ![Screenshot](data/screenshots/screenshot-01.png)
