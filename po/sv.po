@@ -91,11 +91,11 @@ msgstr "Om"
 
 #: src/github_l10n/app.py:310
 msgid "Toggle Notifications"
-msgstr ""
+msgstr "Växla aviseringar"
 
 #: src/github_l10n/app.py:318
 msgid "Export data"
-msgstr ""
+msgstr "Exportera data"
 
 #: src/github_l10n/app.py:323
 msgid "All"
@@ -115,11 +115,11 @@ msgstr "Klicka på Uppdatera för att söka efter GitHub-förråd"
 
 #: src/github_l10n/app.py:406
 msgid "Export Data"
-msgstr ""
+msgstr "Exportera data"
 
 #: src/github_l10n/app.py:407
 msgid "Choose export format:"
-msgstr ""
+msgstr "Välj exportformat:"
 
 #: src/github_l10n/app.py:408 src/github_l10n/app.py:619
 msgid "Cancel"
@@ -145,12 +145,12 @@ msgstr ""
 
 #: src/github_l10n/app.py:507
 msgid "GitHub L10n: Scan complete"
-msgstr ""
+msgstr "GitHub L10n: Genomsökning klar"
 
 #: src/github_l10n/app.py:508
 #, python-brace-format
 msgid "{no} repos without {lang} translation"
-msgstr ""
+msgstr "{no} arkiv utan {lang} översättning"
 
 #: src/github_l10n/app.py:535
 #, python-format
