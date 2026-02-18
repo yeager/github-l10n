@@ -699,7 +699,7 @@ class GithubL10nApp(Adw.Application):
             website="https://github.com/yeager/github-l10n",
             issue_url="https://github.com/yeager/github-l10n/issues",
             translate_url="https://app.transifex.com/danielnylander/github-l10n/",
-            translator_credits="Daniel Nylander <daniel@danielnylander.se>",
+            translator_credits=_("Translate this app: https://www.transifex.com/danielnylander/github-l10n/"),
             comments=_("Scan GitHub repositories for missing translations"),
         )
         about.set_debug_info(_get_system_info())
