@@ -642,6 +642,7 @@ class MainWindow(Adw.ApplicationWindow):
 class GithubL10nApp(Adw.Application):
     def __init__(self):
         super().__init__(application_id=APP_ID)
+        GLib.set_application_name(_("GitHub Translation Stats"))
         if HAS_NOTIFY:
             _Notify.init("github-l10n")
         about_action = Gio.SimpleAction.new("about", None)
