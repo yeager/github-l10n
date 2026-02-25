@@ -8,3 +8,4 @@ Terminal=false
 Type=Application
 Categories=Development;Translation;
 Keywords=github;translation;l10n;i18n;
+StartupWMClass=se.danielnylander.github-l10n
