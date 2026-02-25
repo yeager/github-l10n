@@ -35,9 +35,6 @@ jobs:
             msgfmt -o locale/$lang/LC_MESSAGES/github-l10n.mo "$po"
           done
 
-      - name: Generate translated .desktop file
-        run: python3 desktop-merge.py data/se.danielnylander.github-l10n.desktop.in po/ data/se.danielnylander.github-l10n.desktop
-
       - name: Build .deb
         run: |
           VERSION=${GITHUB_REF_NAME#v}
